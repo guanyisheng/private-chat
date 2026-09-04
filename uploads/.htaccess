@@ -1,0 +1,4 @@
+# 禁止 uploads 目录执行 PHP，但允许下载文件
+<FilesMatch "\.php$">
+    Require all denied
+</FilesMatch>

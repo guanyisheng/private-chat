@@ -1,0 +1,12 @@
+config/r2.php
+config/push.php
+config/database.php
+config/installed.lock
+vendor/
+logs/*.log
+uploads/*
+!uploads/.gitkeep
+!uploads/.htaccess
+lt/*
+!lt/.gitkeep
+!lt/.htaccess

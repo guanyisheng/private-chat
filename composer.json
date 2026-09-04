@@ -1,0 +1,11 @@
+{
+    "name": "private-chat-room/app",
+    "description": "Private Chat Room",
+    "require": {
+        "php": ">=8.0",
+        "minishlink/web-push": "^9.0"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

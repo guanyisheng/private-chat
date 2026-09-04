@@ -1,0 +1,35 @@
+# Apache 配置
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    RewriteRule ^favicon\.ico$ /assets/icons/icon-192.svg [L]
+
+    # 禁止直接访问敏感目录
+    RewriteRule ^includes/ - [F,L]
+    RewriteRule ^config/ - [F,L]
+    RewriteRule ^logs/ - [F,L]
+    RewriteRule ^sql/ - [F,L]
+
+    # 禁止 uploads 目录执行 PHP（.htaccess 中不能使用 <Directory>）
+    RewriteRule ^uploads/.+\.php$ - [F,L,NC]
+
+    # 禁止访问 .git 等隐藏文件
+    RewriteRule (^\.|/\.) - [F,L]
+</IfModule>
+
+# 禁止目录列表
+Options -Indexes
+
+# 安全头
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# 仅 mod_php 环境生效（PHP-FPM 请在 php.ini 或面板中配置）
+<IfModule mod_php.c>
+    php_value upload_max_filesize 200M
+    php_value post_max_size 210M
+    php_value max_execution_time 900
+</IfModule>

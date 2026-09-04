@@ -1,0 +1,4 @@
+# 禁止 Web 直接访问聊天记录 JSON（管理员通过后台读取）
+<Files "*.json">
+    Require all denied
+</Files>
